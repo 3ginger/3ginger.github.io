@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Shower Presentation Engine</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+	<style>
+		.wide-picture {
+			left: 0;
+			right: 0;
+			position: absolute;
+			width: 100%;
+		}
+		.shadowed {
+			text-shadow: 3px 3px black;
+		}
+		.code-block {
+			height: 100%;
+			overflow-y: scroll;
+		}
+	</style>
+</head>
+<body class="shower list">
+	<header class="caption">
+		<h1>«Войти нельзя выйти – расставь свои запятые»</h1>
+		<p>Герман Гуров, Яндекс</p>
+	</header>
+	<section class="slide" id="cover">
+		<h2>«Войти нельзя выйти – расставь свои запятые»</h2>
+		<p style="text-align: right;"><a href="http://3ginger.com/">Герман Гуров</a>, Яндекс</p>
+		<img src="pictures/photo-1458400411386-5ae465c4e57e.jpeg" alt="" class="cover">
+		<style>
+			#cover h2 {
+				margin:30px 0 0;
+				color: black;
+				text-align:center;
+				font-size:70px;
+				}
+			#cover p {
+				margin:10px 0 0;
+				text-align:center;
+				color: black;
+				font-style:italic;
+				font-size:20px;
+				}
+				#cover p a {
+					color: black;
+					}
+		</style>
+	</section>
+	<section class="slide" id="introduction">
+		<h2>D3js – инструмент выражения данных</h2>
+		<img src="pictures/d3js_introduction.png" class="wide-picture">
+	</section>
+	<section class="slide" id="my-examples">
+		<h2>D3js – мои работы</h2>
+		<img src="pictures/example_nuclear.png"><!-- 
+		 --><img src="pictures/example_vim.png"><!-- 
+		 --><img src="pictures/example_unrecognized_countries.png"><!-- 
+		 --><img src="pictures/example_freddy.png"><!-- 
+		 --><img src="pictures/example_bagration.png"><!-- 
+		 --><img src="pictures/exampe_about_films.png">
+		<style>
+			#my-examples img {
+				width: 33%;
+				vertical-align: middle;
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>Что нам нужно для работы?</h2>
+		<ul>
+			<li class="next"><a href="#data">Данные</a></li>
+			<li class="next"><a href="#tech">Технологии</a></li>
+			<li class="next"><a href="#instruments">Инструменты</a></li>
+		</ul>
+	</section>
+	<section class="slide" id="data">
+		<h2>Данные</h2>
+		<ul>
+			<li class="next">JSON – <strong>J</strong>ava <strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation</li>
+			<li class="next">XML – <strong>E</strong>xtensible <strong>M</strong>arkup <strong>L</strong>anguage</li>
+			<li class="next">CSV, TSV, DSV – <strong>D</strong>elemiter-<strong>S</strong>eparated <strong>V</strong>alues</li>
+		</ul>
+	</section>
+	<section class="slide" id="json-example">
+		<h2>JSON</h2>
+		<div class="code-block">
+			<pre>
+			<code>{
+  "store": {
+    "data": "2016-04-12",
+    "books": [
+      {
+        "name": "Dracula",
+        "author": "Bram Stoker",
+        "year": 1897,
+        "category": "horror"
+      },
+      {
+        "name": "XQuery Kick Start",
+        "author": [
+          "James McGovern",
+          "Per Bothner"
+        ],
+        "year": 2003,
+        "price": 49.99,
+        "category": "adventure"
+      }
+    ]
+  }
+}
+
+
+</code>
+			</pre>
+		</div>
+	</section>
+	<section class="slide">
+		<h2>CSV</h2>
+		<div class="code-block">
+			<pre>
+				<code>
+name, authors, year, price, category
+Dracula, Bram Stoker, 1897, , horror
+XQuery Kick Start, James McGovern|Per Bothner, 2003, 49.99, adventure
+
+
+				</code>
+			</pre>
+		</div>
+	</section>
+	<section class="slide">
+		<h2>XML</h2>
+		<div class="code-block">
+		<pre>
+<code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;store data="2016-04-12"&gt;
+    &lt;book category="horror"&gt;
+        &lt;name&gt;Dracula&lt;/name&gt;
+        &lt;author&gt;Bram Stoker&lt;/author&gt;
+        &lt;year&gt;1897&lt;/year&gt;
+    &lt;/book&gt;
+    &lt;book category="adventure"&gt;
+        &lt;name&gt;XQuery Kick Start&lt;/name&gt;
+        &lt;author&gt;James McGovern&lt;/author&gt;
+        &lt;author&gt;Per Bothner&lt;/author&gt;
+        &lt;year&gt;2003&lt;/year&gt;
+        &lt;price&gt;49.99&lt;/price&gt;
+    &lt;/book&gt;
+&lt;/store&gt;
+
+
+</code>
+		</pre>
+		</div>
+	</section>
+	<section class="slide">
+		<h2>Человеческое представление</h2>
+		<table>
+			<tr>
+				<th scope="col">name</th>
+				<th>authors</th>
+				<th>year</th>
+				<th>price</th>
+				<th>category</th>
+			</tr>
+			<tr>
+				<th scope="row">Dracula</th>
+				<td>Bram Stoker</td>
+				<td>1897</td>
+				<td>–</td>
+				<td>horror</td>
+			</tr>
+			<tr>
+				<th scope="row">XQuery Kick Start</th>
+				<td>
+					<div>James McGovern</div>
+					<div>Per Bothner</div>
+				</td>
+				<td>2003</td>
+				<td>49.99</td>
+				<td>adventure</td>
+			</tr>
+		</table>
+	</section>
+	<section class="slide" id="tech">
+		<h2>Технологии</h2>
+		<ul>
+			<li class="next">HTML – <strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage</li>
+			<li class="next">SVG – <strong>S</strong>calable <strong>V</strong>ector <strong>G</strong>raphics</li>
+			<li class="next">CSS – <strong>C</strong>ascading <strong>S</strong>tyle <strong>S</strong>heets</li>
+			<li class="next">JS – <strong>J</strong>ava <strong>S</strong>cript</li>
+		</ul>
+	</section>
+	<section class="slide">
+		<h2>HTML</h2>
+		<img src="pictures/html_example.png" class="wide-picture">
+	</section>
+	<section class="slide">
+		<h2>SVG</h2>
+		<img src="pictures/svg_example.png" class="wide-picture">
+	</section>
+	<section class="slide">
+		<h2>CSS</h2>
+		<img src="pictures/css_example.png" class="wide-picture">
+	</section>
+	<section class="slide">
+		<h2>JS</h2>
+		<img src="pictures/javascript_example.png" class="wide-picture">
+	</section>
+	<section class="slide" id="instruments">
+		<h2>Инструменты</h2>
+		<ul>
+			<li><a href="#code-editor">Редактор кода</a></li>
+			<li><a href="#browser">Браузер</a></li>
+			<li>Терминал</li>
+		</ul>
+	</section>
+	<section class="slide" id="code-editor">
+		<h2>Редакторы кода</h2>
+		<ul>
+			<li><a href="https://www.jetbrains.com/webstorm/">WebStorm</a> Free 30-day trial</li>
+			<li><a href="https://www.sublimetext.com/3">Sublime Text 3</a></li>
+			<li><a href="https://atom.io/">Atom</a></li>
+			<li><a href="http://brackets.io/">Brackets</a></li>
+		</ul>
+		<p class="note">WebStorm – наиболее прост для новичков</p>
+	</section>
+	<section class="slide">
+		<h2>Подготовим окружение для первого проекта</h2>
+		<ul>
+			<li>Установить <a href="https://nodejs.org/en/">Node.js</a> и npm</li>
+			<li>Перейти в папку с проектом (терминал)</li>
+			<li>Инициализировать пакетный менеджер: <code>npm init</code></li>
+			<li>Установить пакеты: <code>npm i d3 lodash normalize.css --save</code></li>
+			<li>Завести структуру проекта</li>
+		</ul>
+	</section>
+	<section class="slide" id="structure-project">
+		<h2>Структура проекта</h2>
+		<code>
+			<div>.</div>
+			<div>├── data</div>
+			<div>├── images</div>
+			<div>├── index.html</div>
+			<div>├── main.css</div>
+			<div>├── main.js</div>
+			<div>└── package.json</div>
+		</code>
+		<style>
+			#structure-project code {
+				background-color: white;
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>Установленные пакеты</h2>
+		<ul>
+			<li><a href="https://github.com/d3/d3">d3</a> – пакет для визуализации данных</li>
+			<li><a href="https://lodash.com/">lodash</a> – пакет для манипуляции данными</li>
+			<li><a href="https://necolas.github.io/normalize.css/">normalize.css</a> – пакет для приведения css к единому стилю</li>
+		</ul>
+	</section>
+	<section class="slide" id="browser">
+		<h2>Браузер</h2>
+		<ul>
+			<li class="next">не имеет значение в чем разрабатывать проект</li>
+			<li class="next">имеет значение в чем проверять проект</li>
+		</ul>
+		<p class="note next">Chrome, YandexBrowser – наилучшие средства отладки</p>
+	</section>
+	<section class="slide">
+		<h2>Отладка в браузере</h2>
+		<p><code>Cmd+Alt+I</code> – Mac, <code>Ctrl+Shift+J</code> – Windows/Linux</p>
+		<img src="pictures/debugging_chrome.png" class="wide-picture">
+	</section>
+	<section class="slide" id="what-do-we-do">
+		<h2>Чем же мы будет заниматься?</h2>
+		<div class="content next">
+			<div class="content-wrapper">
+				<div class="circle">
+					<div class="more-percent">70%</div> / <div class="less-percent">30%</div>
+				</div>
+			</div>
+		</div>
+		<p class="note next">
+			70% – перевязка и подготовка данных<br>
+			30% – разработка визуальной части
+		</p>
+		<style>
+			#what-do-we-do .circle {
+				width: 300px;
+				height: 300px;
+				border-radius: 50%;
+				border: 10px solid #C00;
+			}
+			#what-do-we-do .more-percent {
+				font-size: 70px;
+				font-weight: bold;
+				display: inline-block;
+			}
+			#what-do-we-do .less-percent {
+				display: inline-block;
+			}
+			#what-do-we-do .circle {
+				display: table-cell;
+				vertical-align: middle;
+				text-align: center;
+			}
+			#what-do-we-do .content-wrapper {
+				display: inline-block;
+			}
+			#what-do-we-do .content {
+				text-align: center;
+			}
+		</style>
+	</section>
+
+	<section class="slide">
+		<h2>Полезные ссылки</h2>
+		<ul>
+			<li></li>
+		</ul>
+	</section>
+
+	<section class="slide" id="see-more">
+		<h2 class="shout">
+			<img src="pictures/logo.svg" alt="Shower logo">
+			<a href="https://github.com/shower/shower">See more on GitHub</a>
+		</h2>
+		<style>
+			#see-more h2 {
+				font-size:100px
+				}
+			#see-more img {
+				width:0.72em;
+				height:0.72em;
+				}
+		</style>
+	</section>
+	<p class="badge">
+		<a href="https://github.com/shower/shower">Fork me on GitHub</a>
+	</p>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "store": {
+    "data": "2016-04-12",
+    "books": [
+      {
+        "name": "Dracula",
+        "author": "Bram Stoker",
+        "year": 1897,
+        "category": "horror"
+      },
+      {
+        "name": "XQuery Kick Start",
+        "author": [
+          "James McGovern",
+          "Per Bothner"
+        ],
+        "year": 2003,
+        "price": 49.99,
+        "category": "adventure"
+      }
+    ]
+  }
+}
